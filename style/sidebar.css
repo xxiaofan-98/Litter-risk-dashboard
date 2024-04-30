@@ -3,13 +3,13 @@
   left: 0;
   bottom: 0;
   top: 0px;
-  background-color: #EDEFF1;
+  background-color: #edeff1;
   width: 350px;
   z-index: 200;
   padding-top: 0;
 }
 
-.sidebar-head{
+.sidebar-head {
   font-weight: bold;
   background-color: rgb(255, 255, 255);
   padding-top: 5px;
@@ -21,7 +21,6 @@
   cursor: pointer;
   padding-bottom: 5px;
   margin-bottom: 10px;
-
 }
 
 .sidebar-head:hover {
@@ -91,4 +90,10 @@
   margin-right: 5px;
   border-radius: 5px;
   white-space: nowrap;
+}
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px; /* Adjust the gap between items as needed */
 }

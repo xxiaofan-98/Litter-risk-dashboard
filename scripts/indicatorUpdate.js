@@ -39,7 +39,10 @@ export function updateIndicator(data) {
   const avgRestaurant = calculateAverage(cityObj[data], "restaurant").toFixed(
     2
   );
-  const avgWaterDis = calculateAverage(cityObj[data], "water_nn").toFixed(2);
+  const avgWaterDis = calculateAverage(cityObj[data], "water_sig_dis").toFixed(
+    2
+  );
+  const avgPop = calculateAverage(cityObj[data], "sum_pop");
   // add more later...
 
   // update risklevel
@@ -47,22 +50,28 @@ export function updateIndicator(data) {
   riskElm.innerHTML = `${avgRisk}`;
 
   // Update the indicators in the html
-  const countElm = document.querySelector(".js-waste");
+  const countElm = document.querySelector(".js-pop");
   countElm.innerHTML = `
-        <span class="number">${avgWaste}</span>
-        <span class="number-stat">m</span>
-        <p>Waste Avg Distance</p>
+        <span class="number">${Math.floor(avgPop)}</span>
+        <span class="number-stat"></span>
+        <p>Avg Pop</p>
+    `;
+
+  const waterElm = document.querySelector(".js-water");
+  waterElm.innerHTML = `
+        <div class="number">${avgWaterDis}</div>
+        <p>Water Avg Factor</p>
+    `;
+
+  const wasteElm = document.querySelector(".js-waste");
+  wasteElm.innerHTML = `
+        <div class="number">${avgWaste}</div>
+        <p>Water Avg Factor</p>
     `;
 
   const restaurantElm = document.querySelector(".js-restaraunt");
   restaurantElm.innerHTML = `
         <div class="number">${avgRestaurant}</div>
         <p>Restaurant Avg Num</p>
-    `;
-
-  const waterElm = document.querySelector(".js-water");
-  waterElm.innerHTML = `
-        <div class="number">${avgWaterDis}</div>
-        <p>Water Avg Distance</p>
     `;
 }

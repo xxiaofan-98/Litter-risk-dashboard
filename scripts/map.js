@@ -130,15 +130,24 @@ function onEachFeature(feature, layer) {
   layer.bindPopup(
     "<h4>Grid Risk</h4>" +
       (feature.properties
-        ? "<b>" +
+        ? "<b>risk level</b> " +
           feature.properties.Risk_Category +
-          " risk level</b><br />" +
+          "<br />" +
+          "<b>count</b> " +
           feature.properties.count +
-          " count<br />" +
-          feature.properties.water_nn.toFixed(1) +
-          "m /water_nn<br />" +
-          feature.properties.restaurant_nn.toFixed(1) +
-          "m /restaurant_nn"
+          "<br />" +
+          "<b>total pop</b> " +
+          Math.floor(feature.properties.sum_pop) +
+          "<br />" +
+          "<b>water factor</b> " +
+          feature.properties.water_sig_dis.toFixed(2) +
+          "<br />" +
+          "<b>waste factor</b> " +
+          feature.properties.waste_sig_dis.toFixed(2) +
+          "<br />" +
+          "<b>restaurant Num</b> " +
+          Math.floor(feature.properties.restaurant) +
+          "<br />"
         : "No data available")
   );
 }
