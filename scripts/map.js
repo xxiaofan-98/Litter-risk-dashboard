@@ -136,17 +136,17 @@ function onEachFeature(feature, layer) {
           "<b>count</b> " +
           feature.properties.count +
           "<br />" +
-          "<b>total pop</b> " +
+          "<b>population</b> " +
           Math.floor(feature.properties.sum_pop) +
           "<br />" +
-          "<b>water factor</b> " +
-          feature.properties.water_sig_dis.toFixed(2) +
+          "<b>Distance to water</b> " +
+          Math.floor(feature.properties.water_sig_dis) +
           "<br />" +
-          "<b>waste factor</b> " +
-          feature.properties.waste_sig_dis.toFixed(2) +
+          "<b>Retail zoning score</b> " +
+          Math.floor(feature.properties.retail_nn) +
           "<br />" +
-          "<b>restaurant Num</b> " +
-          Math.floor(feature.properties.restaurant) +
+          "<b>Restaurant zoning score</b> " +
+          Math.floor(feature.properties.residential_nn) +
           "<br />"
         : "No data available")
   );

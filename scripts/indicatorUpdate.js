@@ -35,15 +35,14 @@ function calculateAverage(data, propertyName) {
 // Example usage:
 export function updateIndicator(data) {
   const avgRisk = calculateAverage(cityObj[data], "Risk_Category").toFixed(2);
-  const avgWaste = calculateAverage(cityObj[data], "waste_nn").toFixed(2);
-  const avgRestaurant = calculateAverage(cityObj[data], "restaurant").toFixed(
-    2
+  const avgRetail = Math.floor(calculateAverage(cityObj[data], "retail_nn"));
+  const avgResidential = Math.floor(
+    calculateAverage(cityObj[data], "residential_nn")
   );
-  const avgWaterDis = calculateAverage(cityObj[data], "water_sig_dis").toFixed(
-    2
+  const avgWaterDis = Math.floor(
+    calculateAverage(cityObj[data], "water_sig_dis")
   );
   const avgPop = calculateAverage(cityObj[data], "sum_pop");
-  // add more later...
 
   // update risklevel
   const riskElm = document.querySelector(".js-number");
@@ -54,24 +53,24 @@ export function updateIndicator(data) {
   countElm.innerHTML = `
         <span class="number">${Math.floor(avgPop)}</span>
         <span class="number-stat"></span>
-        <p>Avg Pop</p>
+        <p>Avg Population</p>
     `;
 
   const waterElm = document.querySelector(".js-water");
   waterElm.innerHTML = `
         <div class="number">${avgWaterDis}</div>
-        <p>Water Avg Factor</p>
+        <p>Distance to water</p>
     `;
 
   const wasteElm = document.querySelector(".js-waste");
   wasteElm.innerHTML = `
-        <div class="number">${avgWaste}</div>
-        <p>Water Avg Factor</p>
+        <div class="number">${avgRetail}</div>
+        <p>Retail zoning score</p>
     `;
 
   const restaurantElm = document.querySelector(".js-restaraunt");
   restaurantElm.innerHTML = `
-        <div class="number">${avgRestaurant}</div>
-        <p>Restaurant Avg Num</p>
+        <div class="number">${avgResidential}</div>
+        <p>Restaurant zoning score</p>
     `;
 }
